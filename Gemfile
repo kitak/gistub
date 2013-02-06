@@ -8,7 +8,7 @@ group :sqlite do
   gem 'activerecord-jdbcsqlite3-adapter', platforms: :jruby
 end
 
-gem 'omniauth-openid', '1.0.1'
+gem 'omniauth-facebook', '1.4.1'
 gem 'erubis',  '~> 2.7.0'
 gem 'simple_form', '2.0.4'
 gem 'kaminari', '0.14.1'
@@ -26,7 +26,7 @@ end
 
 group :assets do
   gem 'less-rails'
-  gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+  gem 'twitter-bootstrap-rails', git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
   gem 'therubyracer', '0.10.2', platforms: :ruby
   gem 'therubyrhino', platforms: :jruby
   gem 'uglifier', '>= 1.0.3'
