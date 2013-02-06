@@ -16,4 +16,4 @@ bin/
 coverage/
 backup/
 test/reports
-
+config/facebook_auth.yml
