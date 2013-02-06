@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 class GistsController < ApplicationController
 
-  before_filter :login_required, :only => [:mine, :mine_page, :fork]
+  before_filter :login_required, :only => [:mine, :mine_page, :fork, :new, :edit, :create, :update, :destroy]
 
   respond_to :html
 
