@@ -2,6 +2,10 @@
 
   <%= render :partial => 'common/flash_notice' %>
 
+  <% unless current_user.present? %>
+    <h3>Please signin on Facebook</h3>
+  <% end %>
+
   <% unless @gists.to_a.size == 0 %>
       <h3><i class="icon-pencil"></i>&nbsp;Latest 5 Public Gists</h3>
       <hr/>
@@ -38,9 +42,11 @@
       <hr/>
   <% end %>
 
-  <h3>New Gist</h3>
-  <hr/>
-  <%= render 'gists/form' %>
+  <% if current_user.present? %>
+    <h3>New Gist</h3>
+    <hr/>
+    <%= render 'gists/form' %>
+  <% end %>
 
   <script type="text/javascript">//<![CDATA[
   $(function () {
