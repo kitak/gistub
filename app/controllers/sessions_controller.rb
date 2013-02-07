@@ -20,7 +20,9 @@ class SessionsController < ApplicationController
     if auth.present?
       unless  User.inct_student? auth
         return redirect_to root_path(:return_to => params[:return_to]),
-                           :notice => 'gmアカウントでログインしてください'
+                           :flash => {
+                             :error => 'gmアカウントでログインしてください'
+                           }
       end
 
       user = User.where(:omniauth_provider => auth["provider"], :omniauth_uid => auth["uid"]).first ||
