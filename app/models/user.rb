@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     end
 
     def inct_student?(auth)
-      /\A.+\@gm\.ishikawa\-nct\.ac\.jp\Z/ =~ "s113105@gm.ishikawa-nct.ac.jp" 
+      /\A.+\@gm\.ishikawa\-nct\.ac\.jp\Z/ =~ auth["info"]["email"] 
     end
   end
 
