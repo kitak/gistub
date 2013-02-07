@@ -26,7 +26,7 @@ end
 
 group :assets do
   gem 'less-rails'
-  gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+  gem 'twitter-bootstrap-rails', git: 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
   gem 'therubyracer', '0.10.2', platforms: :ruby
   gem 'therubyrhino', platforms: :jruby
   gem 'uglifier', '>= 1.0.3'
