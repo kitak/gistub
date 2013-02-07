@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   def login_required
     if current_user.blank?
-      redirect_to signin_path(:return_to => request.url)
+      redirect_to root_path(:return_to => request.url)
     end
   end
 
