@@ -5,6 +5,7 @@ class RootController < ApplicationController
 
   def index
     @gists = Gist.limit(5).recent
+    @return_to = params[:return_to] 
   end
 
 end

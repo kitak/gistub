@@ -24,8 +24,10 @@
         <% if current_user.present? %>
             <%= link_to current_user.nickname, user_path(current_user), :class => 'btn btn-small' %>
             <%= link_to 'Sign out', signout_path, :class => 'btn btn-small' %>
+        <% elsif @return_to.present? %>
+            <%= link_to 'Sign in', signin_path(:return_to => @return_to) , :class => 'btn btn-small' %>
         <% else %>
-            <%= link_to 'Sign in', signin_path, :class => 'btn btn-small' %>
+            <%= link_to 'Sign in', signin_path , :class => 'btn btn-small' %>
         <% end %>
       </div>
       <%= link_to 'INCT Gistub', root_path, :class => 'brand' %>
