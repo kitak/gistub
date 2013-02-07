@@ -3,51 +3,51 @@
   <%= render :partial => 'common/flash_notice' %>
 
   <% unless current_user.present? %>
-      <p>Please login by gm account</p>
-  <% end %>
-
-  <% unless @gists.to_a.size == 0 %>
-      <h3><i class="icon-pencil"></i>&nbsp;Latest 5 Public Gists
-        <%= render :partial => 'common/search_form' %>
-      </h3>
-      <hr/>
-      <% @gists.each do |gist| %>
-          <% if gist.latest_history.present? %>
-              <h4>
-              <i class="icon-pencil"></i>&nbsp;<%= link_to gist.title, gist %>
-                <% if gist.favorites.present? %>
-                    <small><%= gist.favorites.size %> <% if gist.favorites.size == 1 %>like<% else %>likes<% end %><% if gist.comments.present? %>,<% end %></small>
-                <% end %>
-                <% if gist.comments.present? %>
-                    <small><%= gist.comments.size %> <% if gist.comments.size == 1 %>comment<% else %>comments<% end %></small>
-                <% end %>
-              <div class="pull-right">
-                <small>
-                  <%= time_ago_in_words(gist.latest_history.created_at) + ' ago' %>
-                  by
-                  <% if gist.user.nil? %>Anonymous
-                      <% else %><%= link_to gist.user.nickname, user_path(gist.user) %>
-                  <% end %>
-                </small>
-              </div>
-          </h4>
-              <pre class="prettyprint linenums"><small><%= gist.latest_history.headline %></small></pre>
-          <% end %>
-      <% end %>
-
-      <div>
-        <div class="pull-right">
-          <%= link_to 'Read more...', gists_path %>
-        </div>
-        <br/>
-      </div>
-      <hr/>
+      <h3>Please login by gm account</h3>
   <% end %>
 
   <% if current_user.present? %>
-      <h3>New Gist</h3>
-      <hr/>
-      <%= render 'gists/form' %>
+    <% unless @gists.to_a.size == 0 %>
+        <h3><i class="icon-pencil"></i>&nbsp;Latest 5 Public Gists
+          <%= render :partial => 'common/search_form' %>
+        </h3>
+        <hr/>
+        <% @gists.each do |gist| %>
+            <% if gist.latest_history.present? %>
+                <h4>
+                <i class="icon-pencil"></i>&nbsp;<%= link_to gist.title, gist %>
+                  <% if gist.favorites.present? %>
+                      <small><%= gist.favorites.size %> <% if gist.favorites.size == 1 %>like<% else %>likes<% end %><% if gist.comments.present? %>,<% end %></small>
+                  <% end %>
+                  <% if gist.comments.present? %>
+                      <small><%= gist.comments.size %> <% if gist.comments.size == 1 %>comment<% else %>comments<% end %></small>
+                  <% end %>
+                <div class="pull-right">
+                  <small>
+                    <%= time_ago_in_words(gist.latest_history.created_at) + ' ago' %>
+                    by
+                    <% if gist.user.nil? %>Anonymous
+                        <% else %><%= link_to gist.user.nickname, user_path(gist.user) %>
+                    <% end %>
+                  </small>
+                </div>
+            </h4>
+                <pre class="prettyprint linenums"><small><%= gist.latest_history.headline %></small></pre>
+            <% end %>
+        <% end %>
+
+        <div>
+          <div class="pull-right">
+            <%= link_to 'Read more...', gists_path %>
+          </div>
+          <br/>
+        </div>
+        <hr/>
+    <% end %>
+
+    <h3>New Gist</h3>
+    <hr/>
+    <%= render 'gists/form' %>
   <% end %>
 
   <script type="text/javascript">//<![CDATA[
