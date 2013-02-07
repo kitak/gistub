@@ -16,7 +16,13 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
+
     if auth.present?
+      unless  User.inct_student? auth
+        return redirect_to root_path(:return_to => params[:return_to]),
+                           :notice => 'gmアカウントでログインしてください'
+      end
+
       user = User.where(:omniauth_provider => auth["provider"], :omniauth_uid => auth["uid"]).first ||
           User.create_with_omniauth(auth)
       session[:user_id] = user.id
