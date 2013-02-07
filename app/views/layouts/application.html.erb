@@ -30,13 +30,15 @@
       </div>
       <%= link_to 'Gistub', root_path, :class => 'brand' %>
 
-      <div class="container nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "New Gist", new_gist_path %></li>
-          <li><%= link_to "Public Gists", gists_path %></li>
-          <li><%= link_to "My Gists", mine_gists_path %></li>
-        </ul>
-      </div>
+      <% if current_user.present? %>
+        <div class="container nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "New Gist", new_gist_path %></li>
+            <li><%= link_to "Public Gists", gists_path %></li>
+            <li><%= link_to "My Gists", mine_gists_path %></li>
+          </ul>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
